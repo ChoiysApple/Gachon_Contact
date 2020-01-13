@@ -4,7 +4,7 @@ class SecondTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.green,
+      backgroundColor: Colors.white,
       body: Container(
         child: Center(
           child: Column(
@@ -14,11 +14,11 @@ class SecondTab extends StatelessWidget {
               Icon(
                 Icons.adb,
                 size: 160.0,
-                color: Colors.white,
+                color: Colors.green,
               ),
               Text(
                 "Second Tab",
-                style: TextStyle(color: Colors.white),
+                style: TextStyle(color: Colors.green),
               )
             ],
           ),

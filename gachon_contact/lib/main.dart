@@ -39,7 +39,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin{
     super.initState();
 
     // Initialize the Tab Controller
-    controller = TabController(vsync: this,length: 2);
+    controller = TabController(length: 2, vsync: this);
   }
 
   @override
@@ -49,41 +49,43 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin{
     super.dispose();
   }
 
-  int _selectedIndex = 0;
-  static const TextStyle optionStyle = TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('가천 연락망'),
-      ),
+      // Appbar
+//      appBar: AppBar(
+//        // Title
+//        title: Text("가천 연락망"),
+//        // Set the background color of the App Bar
+//        backgroundColor: Colors.blue[800],
+//      ),
+      // Set the TabBar view as the body of the Scaffold
       body: TabBarView(
         // Add tabs as widgets
         children: <Widget>[FirstTab(), SecondTab()],
-        // set the controllers
+        // set the controller
         controller: controller,
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.school),
-            title: Text('대학 본부'),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.business),
-            title: Text('부속 기관'),
-          ),
-        ],
-        currentIndex: _selectedIndex,
-        selectedItemColor: Colors.blue[800],
-        onTap: _onItemTapped,
+      // Set the bottom navigation bar
+      bottomNavigationBar: Material(
+        // set the color of the bottom navigation bar
+        color: Colors.blue[800],
+        // set the tab bar as the child of bottom navigation bar
+        child: TabBar(
+          tabs: <Tab>[
+            Tab(
+              // set icon to the tab
+              icon: Icon(Icons.school),
+              text: "대학 본부",
+            ),
+            Tab(
+              icon: Icon(Icons.business),
+              text: "부속 기관",
+            ),
+          ],
+          // setup the controller
+          controller: controller,
+        ),
       ),
     );
   }
