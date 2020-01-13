@@ -69,7 +69,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin{
       // Set the bottom navigation bar
       bottomNavigationBar: Material(
         // set the color of the bottom navigation bar
-        color: Colors.blue[800],
+        color: Colors.blue[600],
         // set the tab bar as the child of bottom navigation bar
         child: TabBar(
           tabs: <Tab>[
