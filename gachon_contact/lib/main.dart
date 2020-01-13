@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:gachon_contact/tab/first.dart';
+import 'package:gachon_contact/tab/second.dart';
+
 
 void main() => runApp(MyApp());
 
@@ -7,7 +10,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: '가천 연락망',
       theme: ThemeData(
 
         primarySwatch: Colors.blue,
@@ -26,24 +29,28 @@ class MyHomePage extends StatefulWidget {
   _MyHomePageState createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin{
+
+  // Create a tab controller
+  TabController controller;
+
+  @override
+  void initState() {
+    super.initState();
+
+    // Initialize the Tab Controller
+    controller = TabController(vsync: this,length: 2);
+  }
+
+  @override
+  void dispose() {
+    // Dispose of the Tab Controller
+    controller.dispose();
+    super.dispose();
+  }
 
   int _selectedIndex = 0;
   static const TextStyle optionStyle = TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
-  static const List<Widget> _widgetOptions = <Widget>[
-    Text(
-      'Index 0: Home',
-      style: optionStyle,
-    ),
-    Text(
-      'Index 1: Business',
-      style: optionStyle,
-    ),
-    Text(
-      'Index 2: School',
-      style: optionStyle,
-    ),
-  ];
 
   void _onItemTapped(int index) {
     setState(() {
@@ -54,11 +61,14 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-//      appBar: AppBar(
-//        title: const Text('BottomNavigationBar Sample'),
-//      ),
-      body: Center(
-        child: _widgetOptions.elementAt(_selectedIndex),
+      appBar: AppBar(
+        title: const Text('가천 연락망'),
+      ),
+      body: TabBarView(
+        // Add tabs as widgets
+        children: <Widget>[FirstTab(), SecondTab()],
+        // set the controllers
+        controller: controller,
       ),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
