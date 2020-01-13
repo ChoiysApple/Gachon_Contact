@@ -10,7 +10,7 @@ class SecondTab extends StatelessWidget {
     return Container(
       color: Color(0xFFFFFF),
       child: ListView.builder(
-          itemCount: executive_name.length,
+          itemCount: depart_name.length,
           itemBuilder: (context, index) {
             return SimpleFoldingCell(
                 frontWidget: _buildFrontWidget(index),
@@ -36,7 +36,7 @@ class SecondTab extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Text(executive_name.elementAt(index),
+                Text(depart_name.elementAt(index),
                     style: TextStyle(
                         color: Color(0xFFFFFFFF),
                         fontFamily: 'OpenSans',
@@ -66,7 +66,7 @@ class SecondTab extends StatelessWidget {
     return Container(
         color: Color(0xFF121212),
         alignment: Alignment.center,
-        child: Text(executive_contact.elementAt(index),
+        child: Text(depart_contact.elementAt(index),
             style: TextStyle(
                 color: Color(0xFFFFFFFF),
                 fontFamily: 'OpenSans',
